@@ -1,0 +1,422 @@
+> use fitness_725006670
+switched to db fitness_725006670
+> db.fitness_725006670.find().pretty()
+{
+	"_id" : ObjectId("5a90b697228d8a15bee37d99"),
+	"uid" : 1001,
+	"age" : 30,
+	"activityDuration" : [
+		20,
+		45,
+		35,
+		40
+	],
+	"stepCount" : [
+		2034,
+		5432,
+		3056,
+		4302
+	],
+	"goal" : {
+		"activityGoal" : "75min",
+		"stepGoal" : 8000,
+		"weekGoal" : 3
+	}
+}
+{
+	"_id" : ObjectId("5a90b697228d8a15bee37d9a"),
+	"uid" : 1002,
+	"activityDuration" : [
+		50,
+		4,
+		10,
+		60,
+		67,
+		10,
+		30,
+		45
+	],
+	"gender" : "female",
+	"goal" : {
+		"activityGoal" : "45min",
+		"stepGoal" : 0,
+		"weekGoal" : 4
+	},
+	"tags" : [
+		"activityOnly"
+	]
+}
+{
+	"_id" : ObjectId("5a90b697228d8a15bee37d9b"),
+	"uid" : 1003,
+	"employeeID" : 111001111,
+	"stepCount" : [
+		6010,
+		8900,
+		10141,
+		7543,
+		6364,
+		4901,
+		351,
+		204,
+		5371,
+		3454,
+		6574,
+		7856,
+		9365,
+		9646
+	],
+	"gender" : "male",
+	"height" : "5ft10in",
+	"weight" : "172lbs",
+	"division" : "HR",
+	"goal" : {
+		"activityGoal" : "NA",
+		"stepGoal" : 10000,
+		"weekGoal" : 5
+	},
+	"tags" : [
+		"active",
+		"stepOnly"
+	]
+}
+> db.fitness_725006670.insertMany([{
+... "uid": 1004,
+... "age": 45,
+... "height": "5ft1in",
+... "weight": "160lbs",
+... "activityDuration": [67, 48, 56, 15, 57, 20, 57, 15, 60, 10, 4, 3, 89],
+... "goal": {
+... "activityGoal": "60min",
+... "stepGoal": 0,
+... "weekGoal": 3
+... },
+... "tags": ["irregular", "activityOnly"]
+... },
+... {
+... "uid": 1005,
+... "activityDuration": [56, 62, 48, 54],
+... "stepCount": [6792, 7832, 5876, 6453],
+... "age": 50,
+... "gender": "male",
+... "goal": {
+... "activityGoal": "45min",
+... "stepGoal": 8000,
+... "weekGoal": 3
+... },
+... "tags": ["active"]
+... },
+... {
+... "uid": 1006,
+... "stepCount": [7694, 4568, 2390, 6738, 1243, 132, 6785],
+... "goal": {
+... "activityGoal": "NA",
+... "stepGoal": 5000,
+... "weekGoal": 7
+... },
+... "tags": ["irregular", "stepOnly"]
+... },
+... {
+... "uid": 1007,
+... "activityDuration": [23, 14, 32, 12, 19, 32],
+... "stepCount": [543, 534, 231, 234, 241],
+... "goal": {
+... "activityGoal": "30min",
+... "stepGoal": 1000,
+... "weekGoal": 7
+... },
+... "tags": ["beginner"]
+... },
+... {
+... "uid": 1008,
+... "activityDuration": [72, 75, 78, 45, 79, 86],
+... "stepCount": [10439, 10456, 10458, 3423, 10807, 11232],
+... "gymDuration": [62, 61, 64, 0, 67, 69],
+... "height": "5ft10in",
+... "weight": "178lbs",
+... "goal": {
+... "activityGoal": "90min",
+... "stepGoal": 12000,
+... "weekGoal": 5
+... },
+... "competitors": [1009],
+... "tags": ["regular", "sportsman", "gymGoer", "competitor"]
+... },
+... {
+... "uid": 1009,
+... "activityDuration": [73, 68, 83, 79, 34, 86],
+... "stepCount": [10439, 10216, 11342, 11278, 4323, 11762],
+... "gymDuration": [60, 58, 64, 62, 0, 64],
+... "height": "5ft8in",
+... "weight": "183lbs",
+... "goal": {
+... "activityGoal": "90min",
+... "stepGoal": 12000,
+... "weekGoal": 5
+... },
+... "competitors": [1008],
+... "tags": ["regular", "sportsman", "gymGoer", "competitor"]
+... }
+... ])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("5a90b72531e3069864284c5c"),
+		ObjectId("5a90b72531e3069864284c5d"),
+		ObjectId("5a90b72531e3069864284c5e"),
+		ObjectId("5a90b72531e3069864284c5f"),
+		ObjectId("5a90b72531e3069864284c60"),
+		ObjectId("5a90b72531e3069864284c61")
+	]
+}
+> db.fitness_725006670.update({uid:1001},{"uid" : 1001, "activityDuration" : [ 20, 45, 35, 40 ], "age" : 30, "stepCount" : [ 2034, 5432, 3056, 4302 ], "goal" : { "weekGoal" : 3, "activityGoal" : "75min", "stepGoal" : 8000},"height": "5ft10in",   "weight": "190lbs",   "tags": ["ambitious"]})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.fitness_725006670.count()
+9
+> db.fitness_725006670.find({tags:"active"}).pretty()
+{
+	"_id" : ObjectId("5a90b697228d8a15bee37d9b"),
+	"uid" : 1003,
+	"employeeID" : 111001111,
+	"stepCount" : [
+		6010,
+		8900,
+		10141,
+		7543,
+		6364,
+		4901,
+		351,
+		204,
+		5371,
+		3454,
+		6574,
+		7856,
+		9365,
+		9646
+	],
+	"gender" : "male",
+	"height" : "5ft10in",
+	"weight" : "172lbs",
+	"division" : "HR",
+	"goal" : {
+		"activityGoal" : "NA",
+		"stepGoal" : 10000,
+		"weekGoal" : 5
+	},
+	"tags" : [
+		"active",
+		"stepOnly"
+	]
+}
+{
+	"_id" : ObjectId("5a90b72531e3069864284c5d"),
+	"uid" : 1005,
+	"activityDuration" : [
+		56,
+		62,
+		48,
+		54
+	],
+	"stepCount" : [
+		6792,
+		7832,
+		5876,
+		6453
+	],
+	"age" : 50,
+	"gender" : "male",
+	"goal" : {
+		"activityGoal" : "45min",
+		"stepGoal" : 8000,
+		"weekGoal" : 3
+	},
+	"tags" : [
+		"active"
+	]
+}
+> db.fitness_725006670.find({"goal.stepGoal":{$gt:5000}}).pretty()
+{
+	"_id" : ObjectId("5a90b697228d8a15bee37d99"),
+	"uid" : 1001,
+	"activityDuration" : [
+		20,
+		45,
+		35,
+		40
+	],
+	"age" : 30,
+	"stepCount" : [
+		2034,
+		5432,
+		3056,
+		4302
+	],
+	"goal" : {
+		"weekGoal" : 3,
+		"activityGoal" : "75min",
+		"stepGoal" : 8000
+	},
+	"height" : "5ft10in",
+	"weight" : "190lbs",
+	"tags" : [
+		"ambitious"
+	]
+}
+{
+	"_id" : ObjectId("5a90b697228d8a15bee37d9b"),
+	"uid" : 1003,
+	"employeeID" : 111001111,
+	"stepCount" : [
+		6010,
+		8900,
+		10141,
+		7543,
+		6364,
+		4901,
+		351,
+		204,
+		5371,
+		3454,
+		6574,
+		7856,
+		9365,
+		9646
+	],
+	"gender" : "male",
+	"height" : "5ft10in",
+	"weight" : "172lbs",
+	"division" : "HR",
+	"goal" : {
+		"activityGoal" : "NA",
+		"stepGoal" : 10000,
+		"weekGoal" : 5
+	},
+	"tags" : [
+		"active",
+		"stepOnly"
+	]
+}
+{
+	"_id" : ObjectId("5a90b72531e3069864284c5d"),
+	"uid" : 1005,
+	"activityDuration" : [
+		56,
+		62,
+		48,
+		54
+	],
+	"stepCount" : [
+		6792,
+		7832,
+		5876,
+		6453
+	],
+	"age" : 50,
+	"gender" : "male",
+	"goal" : {
+		"activityGoal" : "45min",
+		"stepGoal" : 8000,
+		"weekGoal" : 3
+	},
+	"tags" : [
+		"active"
+	]
+}
+{
+	"_id" : ObjectId("5a90b72531e3069864284c60"),
+	"uid" : 1008,
+	"activityDuration" : [
+		72,
+		75,
+		78,
+		45,
+		79,
+		86
+	],
+	"stepCount" : [
+		10439,
+		10456,
+		10458,
+		3423,
+		10807,
+		11232
+	],
+	"gymDuration" : [
+		62,
+		61,
+		64,
+		0,
+		67,
+		69
+	],
+	"height" : "5ft10in",
+	"weight" : "178lbs",
+	"goal" : {
+		"activityGoal" : "90min",
+		"stepGoal" : 12000,
+		"weekGoal" : 5
+	},
+	"competitors" : [
+		1009
+	],
+	"tags" : [
+		"regular",
+		"sportsman",
+		"gymGoer",
+		"competitor"
+	]
+}
+{
+	"_id" : ObjectId("5a90b72531e3069864284c61"),
+	"uid" : 1009,
+	"activityDuration" : [
+		73,
+		68,
+		83,
+		79,
+		34,
+		86
+	],
+	"stepCount" : [
+		10439,
+		10216,
+		11342,
+		11278,
+		4323,
+		11762
+	],
+	"gymDuration" : [
+		60,
+		58,
+		64,
+		62,
+		0,
+		64
+	],
+	"height" : "5ft8in",
+	"weight" : "183lbs",
+	"goal" : {
+		"activityGoal" : "90min",
+		"stepGoal" : 12000,
+		"weekGoal" : 5
+	},
+	"competitors" : [
+		1008
+	],
+	"tags" : [
+		"regular",
+		"sportsman",
+		"gymGoer",
+		"competitor"
+	]
+}
+> db.fitness_725006670.aggregate([{ $project:{ userid: "$uid", totalActivityDuration: { $sum: "$activityDuration"} } }])
+{ "_id" : ObjectId("5a90b697228d8a15bee37d99"), "userid" : 1001, "totalActivityDuration" : 140 }
+{ "_id" : ObjectId("5a90b697228d8a15bee37d9a"), "userid" : 1002, "totalActivityDuration" : 276 }
+{ "_id" : ObjectId("5a90b697228d8a15bee37d9b"), "userid" : 1003, "totalActivityDuration" : 0 }
+{ "_id" : ObjectId("5a90b72531e3069864284c5c"), "userid" : 1004, "totalActivityDuration" : 501 }
+{ "_id" : ObjectId("5a90b72531e3069864284c5d"), "userid" : 1005, "totalActivityDuration" : 220 }
+{ "_id" : ObjectId("5a90b72531e3069864284c5e"), "userid" : 1006, "totalActivityDuration" : 0 }
+{ "_id" : ObjectId("5a90b72531e3069864284c5f"), "userid" : 1007, "totalActivityDuration" : 132 }
+{ "_id" : ObjectId("5a90b72531e3069864284c60"), "userid" : 1008, "totalActivityDuration" : 435 }
+{ "_id" : ObjectId("5a90b72531e3069864284c61"), "userid" : 1009, "totalActivityDuration" : 423 }
